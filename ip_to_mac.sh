@@ -39,7 +39,7 @@ then
                 IP=`echo $SUBNET | awk -F"." '{print $1"."$2"."}'`
                 for i in `seq 0 255`
                      do
-                        for l in `seq 0 255`
+                        for l in `seq 1 255`
                              do
                                  MAC=`arping -I eth0 -c 1 $IP$i"."$l | grep Unicast | awk -F "[" '{print $2}'  | awk -F "]" '{print $1}'`
                                  echo $IP$i"."$l "-->" $MAC
@@ -55,4 +55,3 @@ break
 else stat=1; fi
 echo $stat
 done
-
